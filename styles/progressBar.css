@@ -1,0 +1,214 @@
+:root {
+  --primary-color: #005dff;
+  --second-color: #eef3f6;
+  --color-grey: #dfe6f0;
+}
+
+.progress-bar-container {
+  height: 100%;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+}
+
+.progress-bar-container-title {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  font-size: 25px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.progress-bar {
+  --progress: 5;
+  width: 60%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-image: conic-gradient(
+    from 0deg,
+    var(--primary-color) calc(var(--progress) * 1%),
+    var(--second-color) calc(var(--progress) * 1%)
+  );
+  position: relative;
+  opacity: 1;
+}
+
+.progress-bar::after {
+  box-sizing: padding-box;
+  content: "";
+  position: absolute;
+  background-color: white;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  left: 20px;
+  top: 20px;
+}
+
+.progress-bar_animated {
+  animation: rotate 5s linear infinite;
+  -webkit-animation: rotate 5s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+  }
+}
+
+.progress-bar_hide {
+  animation: opacity 0.2s ease-in-out forwards;
+  -webkit-animation: opacity 0.2s ease-in-out forwards;
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.progress-bar-container label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  font-size: 25px;
+}
+
+.progress-bar-container input[type="text"] {
+  width: 45px;
+  outline: 0;
+  border: 1px solid black;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+  text-align: center;
+  padding: 3px 8px;
+}
+
+.progress-animation-label {
+  height: 39px;
+}
+
+.progress-bar-container .progress-input-label input {
+  cursor: pointer;
+}
+.progress-bar-container input[type="text"]:hover + span {
+  cursor: pointer;
+}
+
+.progress-bar-container input[type="checkbox"] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  display: block;
+  width: 0;
+  height: 0;
+  background-color: transparent;
+}
+
+.progress-bar-container input[type="checkbox"] + span {
+  display: inline-block;
+  position: relative;
+  padding: 0 0 0 83px;
+  line-height: 39px;
+}
+
+.progress-bar-container input[type="checkbox"] + span:before {
+  content: "";
+  display: inline-block;
+  width: 61px;
+  height: 38px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: var(--color-grey);
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+}
+
+.progress-bar-container input[type="checkbox"] + span::after {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  background-color: white;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+}
+
+.progress-bar-container input[type="checkbox"]:checked + span:before {
+  background-color: var(--primary-color);
+}
+
+.progress-bar-container input[type="checkbox"]:checked + span::after {
+  left: 26px;
+}
+
+@media (orientation: landscape) {
+  .progress-bar-container {
+    flex-direction: row;
+    max-width: 568px;
+  }
+  .progress-bar {
+    width: 35%;
+  }
+}
+
+@media (orientation: portrait) {
+  .progress-bar-container {
+    flex-direction: column;
+    max-width: 320px;
+  }
+  .progress-bar {
+    width: 60%;
+  }
+}
